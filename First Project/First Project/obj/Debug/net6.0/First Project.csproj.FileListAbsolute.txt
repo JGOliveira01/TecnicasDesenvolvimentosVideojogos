@@ -1,0 +1,31 @@
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\First Project.exe
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\First Project.deps.json
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\First Project.runtimeconfig.json
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\First Project.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\First Project.pdb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.csproj.AssemblyReference.cache
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.AssemblyInfoInputs.cache
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.AssemblyInfo.cs
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.csproj.CoreCompileInputs.cache
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.csproj.CopyComplete
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\refint\First Project.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.pdb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\First Project.genruntimeconfig.cache
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\obj\Debug\net6.0\ref\First Project.dll
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\level1.txt
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\File.xnb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Character6.xnb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Crate_Brown.xnb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\EndPoint_Blue.xnb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Wall_Brown.xnb
