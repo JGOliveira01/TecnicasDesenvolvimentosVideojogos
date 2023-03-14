@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using System.IO;
 
 namespace First_Project
@@ -12,11 +13,13 @@ namespace First_Project
         private SpriteFont font;
         private int nrLinhas = 0;
         private int nrColunas = 0;
-        private char[,] level;
         private Texture2D player, dot, box, wall; //Load images Texture
         int tileSize = 64;
         private Player sokoban;
 
+        // private char[,] level;
+        public List<Point> boxes;
+        private char[,] level;
 
         public Game1()
         {
@@ -55,6 +58,27 @@ namespace First_Project
             nrLinhas = linhas.Length;
             nrColunas = linhas[0].Length;
             level = new char[nrColunas, nrLinhas];
+            boxes = new List<Point>();
+            for (int x = 0; x < nrColunas; x++)
+            {
+                for (int y = 0; y < nrLinhas; y++)
+                {
+                    if (linhas[y][x] == '#')
+                    {
+                        boxes.Add(new Point(x, y));
+                        level[x, y] = ' '; // put a blank instead of the box '#'
+                    }
+                    else if (linhas[y][x] == 'Y')
+                    {
+                        sokoban = new Player(this, x, y);
+                        level[x, y] = ' '; // put a blank instead of the sokoban 'Y'
+                    }
+                    else
+                    {
+                        level[x, y] = linhas[y][x];
+                    }
+                }
+            }
             for (int x = 0; x < nrColunas; x++)
             {
                 for (int y = 0; y < nrLinhas; y++)
@@ -69,7 +93,7 @@ namespace First_Project
                 {
                     if (linhas[y][x] == 'Y')
                     {
-                        sokoban = new Player(x, y);
+                        sokoban = new Player(this, x, y);
                         level[x, y] = ' '; // put a blank instead of the sokoban 'Y'
                     }
                     else
@@ -85,7 +109,7 @@ namespace First_Project
                 Exit();
 
             // TODO: Add your update logic here
-
+            sokoban.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -105,9 +129,9 @@ namespace First_Project
                         case 'Y':
                             _spriteBatch.Draw(player, position, Color.White);
                             break;
-                        case '#':
-                            _spriteBatch.Draw(box, position, Color.White);
-                            break;
+                        //case '#':
+                        //    _spriteBatch.Draw(box, position, Color.White);
+                        //    break;
                         case '.':
                             _spriteBatch.Draw(dot, position, Color.White);
                             break;
@@ -117,6 +141,12 @@ namespace First_Project
                     }
                 }
             }
+            foreach (Point b in boxes)
+            {
+                position.X = b.X * tileSize;
+                position.Y = b.Y * tileSize;
+                _spriteBatch.Draw(box, position, Color.White);
+            }
             //case 'Y':
             // _spriteBatch.Draw(player, position, Color.White);
             // break;
@@ -125,6 +155,21 @@ namespace First_Project
             _spriteBatch.Draw(player, position, Color.White); //desenha o Player
             _spriteBatch.End();
             base.Draw(gameTime);
+        }
+        public bool HasBox(int x, int y)
+        {
+            foreach (Point b in boxes)
+            {
+                if (b.X == x && b.Y == y) return true; // se a caixa tiver a mesma posição do Player
+            }
+            return false;
+        }
+        public bool FreeTile(int x, int y)
+        {
+            if (level[x, y] == 'X') return false; // se for uma parede está ocupada
+            if (HasBox(x, y)) return false; // verifica se é uma caixa
+            return true;
+            /* The same as: return level[x,y] != 'X' && !HasBox(x,y); */
         }
     }
 }
