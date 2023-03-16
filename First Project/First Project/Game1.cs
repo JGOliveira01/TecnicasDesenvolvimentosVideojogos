@@ -13,14 +13,20 @@ namespace First_Project
         private SpriteFont font;
         private int nrLinhas = 0;
         private int nrColunas = 0;
-        private Texture2D player, dot, box, wall; //Load images Texture
+        public Texture2D dot, box, wall;//Load images Texture 
+        public Texture2D[] player;
         int tileSize = 64;
         private Player sokoban;
-
+        public Direction direction = Direction.Down;
         // private char[,] level;
         public List<Point> boxes;
         private char[,] level;
+        public enum Direction
+        {
+            Up, Down, Left, Right // 0, 1, 2, 3
+        }
 
+ 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -42,7 +48,11 @@ namespace First_Project
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("File"); //Use the name of sprite font file ('File')
-            player = Content.Load<Texture2D>("Character6");
+            player = new Texture2D[4];
+            player[(int)Direction.Down] = Content.Load<Texture2D>("Character4");
+            player[(int)Direction.Up] = Content.Load<Texture2D>("Character7");
+            player[(int)Direction.Left] = Content.Load<Texture2D>("Character1");
+            player[(int)Direction.Right] = Content.Load<Texture2D>("Character2");
             dot = Content.Load<Texture2D>("EndPoint_Blue");
             box = Content.Load<Texture2D>("Crate_Brown");
             wall = Content.Load<Texture2D>("Wall_Brown");
@@ -50,6 +60,15 @@ namespace First_Project
 
 
             // TODO: use this.Content to load your game content here
+        }
+        
+        public bool Victory()
+        {
+            foreach (Point b in boxes) // pecorrer a lista das caixas
+            {
+                if (level[b.X, b.Y] != '.') return false; // verifica se há caixas sem pontos
+            }
+            return true;
         }
 
         void LoadLevel(string levelFile)
@@ -107,8 +126,9 @@ namespace First_Project
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
             // TODO: Add your update logic here
+            if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize();
+            if (Victory()) Exit(); // FIXME: Change current level
             sokoban.Update(gameTime);
             base.Update(gameTime);
         }
@@ -126,9 +146,9 @@ namespace First_Project
                     position.Y = y * tileSize; // define o position
                     switch (level[x, y])
                     {
-                        case 'Y':
-                            _spriteBatch.Draw(player, position, Color.White);
-                            break;
+                        //case 'Y':
+                            //_spriteBatch.Draw(player, position, Color.White);
+                           // break;
                         //case '#':
                         //    _spriteBatch.Draw(box, position, Color.White);
                         //    break;
@@ -152,7 +172,7 @@ namespace First_Project
             // break;
             position.X = sokoban.Position.X * tileSize; //posição do Player
             position.Y = sokoban.Position.Y * tileSize; //posição do Player
-            _spriteBatch.Draw(player, position, Color.White); //desenha o Player
+            _spriteBatch.Draw(player[(int)direction], position, Color.White); //desenha o Player
             _spriteBatch.End();
             base.Draw(gameTime);
         }
