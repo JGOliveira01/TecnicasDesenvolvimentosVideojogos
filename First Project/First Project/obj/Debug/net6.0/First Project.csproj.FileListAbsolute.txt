@@ -38,3 +38,4 @@ C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bi
 C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Character7.xnb
 C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Character8.xnb
 C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Character9.xnb
+C:\Users\olive\TecnicasDesenvolvimentosVideojogos\First Project\First Project\bin\Debug\net6.0\Content\Calibri12.xnb

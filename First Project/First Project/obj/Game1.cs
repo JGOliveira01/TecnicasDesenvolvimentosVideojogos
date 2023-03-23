@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
-//using System.Numerics;
+using System.Numerics;
 using System.Reflection.Emit;
-using Microsoft.Xna.Framework;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
-namespace First_Project
+namespace Sokoban_Projeto_01
 {
     /*
     * - WinScreen
@@ -30,7 +30,7 @@ namespace First_Project
         private SpriteBatch _spriteBatch;
         private int nrLinhas = 0;
         private int nrColunas = 0;
-        private SpriteFont font, letrabacana;
+        private SpriteFont font;
         private Texture2D dot, box, wall; //Load images Texture 
         //private Texture2D[] player;
         private Player sokoban;
@@ -53,12 +53,16 @@ namespace First_Project
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
             LoadLevel("level1.txt");
-            _graphics.PreferredBackBufferHeight = tileSize * (1 + level.GetLength(1)); //definição da altura
+            _graphics.PreferredBackBufferHeight = tileSize * level.GetLength(1); //definição da altura
             _graphics.PreferredBackBufferWidth = tileSize * level.GetLength(0); //definição da largura
             _graphics.ApplyChanges(); //aplica a atualização da janela
+
             sokoban.LoadContents();
+
             base.Initialize();
+
         }
 
         protected override void LoadContent()
@@ -66,7 +70,6 @@ namespace First_Project
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // Use the name of your sprite font file here instead of 'File'.
             font = Content.Load<SpriteFont>("File");
-            letrabacana = Content.Load<SpriteFont>("Calibri12");
             //player = Content.Load<Texture2D>("Character4");
             dot = Content.Load<Texture2D>("EndPoint_Blue");
             box = Content.Load<Texture2D>("Crate_Brown");
@@ -110,15 +113,6 @@ namespace First_Project
             _spriteBatch.DrawString(font, "O texto que quiser", new Vector2(0, 40), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Linhas = {nrLinhas}", new Vector2(0, 0), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Colunas = {nrColunas}", new Vector2(0, 20), Color.Black);
-            _spriteBatch.DrawString(letrabacana, // Tipo de letra
-                "Tempo Decorrido = ", // Texto
-                new Vector2(5, level.GetLength(1) * tileSize + 5), // Posição do texto
-                Color.White, // Cor da letra
-                0f, //Rotação
-                Vector2.Zero, // Origem
-                2f, // Escala
-                SpriteEffects.None, //Sprite effect (FlipHorizontally)
-                0); // Ordenar sprites
 
             Rectangle position = new Rectangle(0, 0, tileSize, tileSize); //calculo do retangulo a depender do tileSize
             for (int x = 0; x < level.GetLength(0); x++)  //pega a primeira dimensão

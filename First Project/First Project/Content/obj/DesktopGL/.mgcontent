@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Calibri12.spritefont</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Character1.png</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Character10.png</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Character2.png</File>
@@ -20,6 +21,7 @@
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Wall_Brown.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
