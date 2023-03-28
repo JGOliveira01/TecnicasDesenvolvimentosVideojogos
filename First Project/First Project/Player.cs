@@ -25,7 +25,7 @@ namespace First_Project
         private Direction direction = Direction.Down;
         public Point Position => position; //auto função (equivalente a ter só get sem put)
         private int delta = 0;
-        private int speed = 1; // NOTE: must be tileSize divider
+        private int speed = 2; // NOTE: must be tileSize divider
         private Vector2 directionVector; 
 
 

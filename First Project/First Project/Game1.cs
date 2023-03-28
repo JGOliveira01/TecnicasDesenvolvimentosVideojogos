@@ -33,9 +33,15 @@ namespace First_Project
         private SpriteFont font, letrabacana;
         private Texture2D dot, box, wall; //Load images Texture 
         //private Texture2D[] player;
+        private string[] levelNames = { "level2.txt" }; //"level1.txt" }; // Level list
+        private int currentLevel = 0; // Current level
         private Player sokoban;
+        private double levelTime = 0f;
+        private bool rDown = false; // if R is still pressed down
+        private bool isWin = false;
+        private int liveCount = 3;
         //private char[,] level;
-        
+
         public const int tileSize = 64; //potencias de 2 (operações binárias)
 
         //public Direction direction = Direction.Down;
@@ -53,7 +59,8 @@ namespace First_Project
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            LoadLevel("level1.txt");
+            //LoadLevel("level1.txt");
+            LoadLevel(levelNames[currentLevel]);
             _graphics.PreferredBackBufferHeight = tileSize * (1 + level.GetLength(1)); //definição da altura
             _graphics.PreferredBackBufferWidth = tileSize * level.GetLength(0); //definição da largura
             _graphics.ApplyChanges(); //aplica a atualização da janela
@@ -84,16 +91,55 @@ namespace First_Project
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            // increment the timer according to the elapsed time between invocations to Update.
+            //levelTime += gameTime.ElapsedGameTime.TotalSeconds;
+            if (!isWin) levelTime += gameTime.ElapsedGameTime.TotalSeconds;
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
             // TODO: Add your update logic here
 
-            if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize(); // Game restart
+            //if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize(); // Game restart
+            if (!rDown && Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                rDown = true;
+                liveCount--;
+                //if (liveCount < 0)
+                if (isWin || liveCount < 0)
+                {
+                    // Reset level
+                    currentLevel = 0;
+                    levelTime = 0f;
+                    liveCount = 3;
+                    isWin = false;
+                }
+                Initialize(); // Game restart
+            }
 
-            if (Victory()) Exit(); // FIXME: Change current level
+            else if (Keyboard.GetState().IsKeyUp(Keys.R))
+            {
+                rDown = false;
+            }
 
-            sokoban.Update(gameTime);
+            //if (Victory()) Exit(); // FIXME: Change current level
+            if (Victory())
+            {
+                if (currentLevel < levelNames.Length - 1)
+                {
+                    currentLevel++;
+                    Initialize();
+                }
+                else
+                {
+                   // Exit(); // FIXME: Win screen
+                   isWin = true;
+                }
+            }
+
+            // increment the timer according to the elapsed time between invocations to Update.
+           if(!isWin) levelTime += gameTime.ElapsedGameTime.TotalSeconds;
+
+            // sokoban.Update(gameTime);
+            if (!isWin) sokoban.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -110,15 +156,45 @@ namespace First_Project
             _spriteBatch.DrawString(font, "O texto que quiser", new Vector2(0, 40), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Linhas = {nrLinhas}", new Vector2(0, 0), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Colunas = {nrColunas}", new Vector2(0, 20), Color.Black);
+            string lives = $"Lives: {liveCount}";
+            Point measure = letrabacana.MeasureString(lives).ToPoint();
+            int posX = level.GetLength(0) * tileSize - measure.X * 2 - 5;
+            _spriteBatch.DrawString(letrabacana, // Tipo de Letra
+            lives, // Texto
+            new Vector2(posX, level.GetLength(1) * tileSize + 10), // Posição do texto
+            Color.Coral, //Cor da Letra
+            0f, //Rotação
+            Vector2.Zero, // Origem
+            2f, // Escala
+            SpriteEffects.None, //FlipHorizontally, //Sprite effect
+            0); // Ordenar sprites
             _spriteBatch.DrawString(letrabacana, // Tipo de letra
-                "Tempo Decorrido = ", // Texto
-                new Vector2(5, level.GetLength(1) * tileSize + 5), // Posição do texto
-                Color.White, // Cor da letra
-                0f, //Rotação
-                Vector2.Zero, // Origem
-                2f, // Escala
-                SpriteEffects.None, //Sprite effect (FlipHorizontally)
-                0); // Ordenar sprites
+                                    $"Time: {levelTime:F2}", //string.Format("Time: {0:F2}", levelTime) // Texto
+                                    new Vector2(5, level.GetLength(1) * tileSize + 10), // Posição do texto
+                                    Color.White, // Cor da letra
+                                    0f, //Rotação
+                                    Vector2.Zero, // Origem
+                                    2f, // Escala
+                                    SpriteEffects.None, //FlipHorizontally, //Sprite effect
+                                    0); // Ordenar sprites
+            if (isWin)
+            {
+                Vector2 windowSize = new Vector2(
+                _graphics.PreferredBackBufferWidth,
+                _graphics.PreferredBackBufferHeight);
+                // Transparent Layer
+                Texture2D pixel = new Texture2D(GraphicsDevice, 1, 1); // Texture of 1 x 1 pixel
+                pixel.SetData(new[] { Color.White }); // unique pixel is white
+                _spriteBatch.Draw(pixel,
+                new Rectangle(Point.Zero, windowSize.ToPoint()),
+                new Color(Color.Green, 0.5f));
+                // Draw Win Message
+                string win = $"You took {levelTime:F1} seconds to Win!";
+                Vector2 winMeasures = letrabacana.MeasureString(win) / 2f;
+                Vector2 windowCenter = windowSize / 2f;
+                Vector2 pos = windowCenter - winMeasures;
+                _spriteBatch.DrawString(letrabacana, win, pos, Color.Coral, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+            }
 
             Rectangle position = new Rectangle(0, 0, tileSize, tileSize); //calculo do retangulo a depender do tileSize
             for (int x = 0; x < level.GetLength(0); x++)  //pega a primeira dimensão
