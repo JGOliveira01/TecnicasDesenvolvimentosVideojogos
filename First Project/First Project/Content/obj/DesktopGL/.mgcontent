@@ -18,9 +18,11 @@
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Crate_Brown.png</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/EndPoint_Blue.png</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/File.spritefont</File>
+    <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/sokoban_ss.png</File>
     <File>C:/Users/olive/TecnicasDesenvolvimentosVideojogos/First Project/First Project/Content/Wall_Brown.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

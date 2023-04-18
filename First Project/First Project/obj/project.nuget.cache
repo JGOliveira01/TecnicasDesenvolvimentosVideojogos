@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "RzDgsRQMMzK2r6/s5dK08l6OafhvHU8DUYznr8Pd9ivkXoKo7P1ZhmelsWSfO2ydf89cwB4rUQyeETg6niWBGw==",
+  "dgSpecHash": "FprTsgwVghBVMSYltqKHxbGOyeom5xbJPBVEhy56u5K+WfJLhQZ3DKyud9xy8ST9NnPfX5i3Jk61MPVOBC0G3g==",
   "success": true,
   "projectFilePath": "C:\\Users\\olive\\TecnicasDesenvolvimentosVideojogos\\First Project\\First Project\\First Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\olive\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\olive\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\olive\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\olive\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }
